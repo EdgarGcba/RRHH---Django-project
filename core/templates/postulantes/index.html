@@ -21,14 +21,16 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for postulante in postulantes %}
                     <tr class="">
-                        <td >1</td>
-                        <td>Edgar</td>
-                        <td>Galleguillo</td>
-                        <td><a name="" id="" class="btn btn-info" href="{% url 'editar' %}#" role="button">Editar</a>
-                            |<a name="" id="" class="btn btn-danger" href="#" role="button">Borrar</a>
+                        <td >{{ postulante.id }}</td>
+                        <td>{{ postulante.nombre }}</td>
+                        <td>{{ postulante.apellido }}</td>
+                        <td><a name="" id="" class="btn btn-info" href="{% url 'editar' postulante.id %}" role="button">Editar</a>
+                            |<a name="" id="" class="btn btn-danger" href="{% url 'eliminar' postulante.id %}" role="button">Borrar</a>
                         </td>
                     </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
