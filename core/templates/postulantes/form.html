@@ -1,21 +1,326 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css">
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css">
+
+
+  <script type="text/javascript" src="/admin/jsi18n/"></script>
+  <script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
+  <script type="text/javascript" src="/static/admin/js/calendar.js"></script>
+  <script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+  <script type="text/javascript" src="/static/admin/js/admin/DateTimeShortcuts.js"></script>
+  <script type="text/javascript" src="/static/admin/js/core.js"></script>
+  <script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+  <script type="text/javascript" src="/static/admin/js/actions.js"></script>
+  <script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+  <script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
+  <script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
+
+
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css">
+</head>
 <form enctype="multipart/form-data" method="post">
   {% csrf_token %}
-  {% for campo in formulario %}
+  
+<!-- Content -->
+<div id="content" class="mb-3">
+        
+  
+  <div id="content-main">
 
-    <div class="mb-3">
-      <label for="" class="form-label">{{ campo.label }}</label>
+
+
+<form action="" method="post" id="postulante_form" novalidate><input type="hidden" name="csrfmiddlewaretoken" value="LtKLp7xmccKbNsnECdECiw7ilmyd8O36PPPuOUojbxHx6i1ubUePsX5MCEQTCprG">
+<div>
+
+
+
+
+
+
+
+<fieldset class="module aligned ">
+
+
+
+  <div class="form-row field-nombre">
       
-      <input 
-      type="{{ campo.field.widget.input_type }}"
-      class="form-control" 
-      name="{{ campo.name }}" 
-      id="" 
-      aria-describedby="helpId" 
-      placeholder="{{ campo.label }}"
-      value="{{ campo.value | default:'' }}"
-      />      
-    </div>
-    <div class="col-12 help-text">{{ campo.errors }}</div>
-  {% endfor %}
+      
+          <div>
+              
+              
+                  <label class="required" for="id_nombre">Nombre:</label>
+                  
+                      <input type="text" name="nombre" class="vTextField" maxlength="25" required id="id_nombre">
+                  
+              
+              
+          </div>
+      
+  </div>
+
+  <div class="form-row field-apellido">
+      
+      
+          <div>
+              
+              
+                  <label class="required" for="id_apellido">Apellido:</label>
+                  
+                      <input type="text" name="apellido" class="vTextField" maxlength="25" required id="id_apellido">
+                  
+              
+              
+          </div>
+      
+  </div>
+
+  <div class="form-row field-iddocumento">
+      
+      
+          <div>
+              
+              
+                  <label for="id_iddocumento">Iddocumento:</label>
+                  
+                      <div class="related-widget-wrapper">
+<select name="iddocumento" id="id_iddocumento">
+<option value="" selected>---------</option>
+
+<option value="1">ID - 1 - DNI</option>
+
+<option value="2">ID - 2 - Pasaporte</option>
+
+<option value="3">ID - 3 - Libreta Civica</option>
+
+<option value="4">ID - 4 - Libreta Enrolamiento</option>
+
+</select>
+
+  
+
+</div>
+                  
+              
+              
+          </div>
+      
+  </div>
+
+  <div class="form-row field-numdocumento">
+      
+      
+          <div>
+              
+              
+                  <label for="id_numdocumento">Numdocumento:</label>
+                  
+                      <input type="text" name="numdocumento" class="vTextField" maxlength="25" id="id_numdocumento">
+                  
+              
+              
+          </div>
+      
+  </div>
+
+  <div class="form-row field-fechadenacimiento">
+      
+      
+          <div>
+              
+              
+                  <label for="id_fechadenacimiento">Fechadenacimiento:</label>
+                  
+                      <input type="text" name="fechadenacimiento" class="vDateField" size="10" id="id_fechadenacimiento">
+                  
+              
+              
+          </div>
+      
+  </div>
+
+  <div class="form-row field-direccion">
+      
+      
+          <div>
+              
+              
+                  <label for="id_direccion">Direccion:</label>
+                  
+                      <input type="text" name="direccion" class="vTextField" maxlength="50" id="id_direccion">
+                  
+              
+              
+          </div>
+      
+  </div>
+
+  <div class="form-row field-idbarrio">
+      
+      
+          <div>
+              
+              
+                  <label for="id_idbarrio">Idbarrio:</label>
+                  
+                      <div class="related-widget-wrapper">
+<select name="idbarrio" id="id_idbarrio">
+<option value="" selected>---------</option>
+
+<option value="1">Barrio object (1)</option>
+
+</select>
+
+  
+
+</div>
+                  
+              
+              
+          </div>
+      
+  </div>
+
+  <div class="form-row field-email">
+      
+      
+          <div>
+              
+              
+                  <label for="id_email">Email:</label>
+                  
+                      <input type="text" name="email" class="vTextField" maxlength="20" id="id_email">
+                  
+              
+              
+          </div>
+      
+  </div>
+
+  <div class="form-row field-celular">
+      
+      
+          <div>
+              
+              
+                  <label for="id_celular">Celular:</label>
+                  
+                      <input type="text" name="celular" class="vTextField" maxlength="20" id="id_celular">
+                  
+              
+              
+          </div>
+      
+  </div>
+
+  <div class="form-row field-idestado">
+      
+      
+          <div>
+              
+              
+                  <label for="id_idestado">Idestado:</label>
+                  
+                      <div class="related-widget-wrapper">
+<select name="idestado" id="id_idestado">
+<option value="" selected>---------</option>
+
+<option value="1">Estado object (1)</option>
+
+</select>
+
+  
+
+</div>
+                  
+              
+              
+          </div>
+      
+  </div>
+
+  <div class="form-row field-idgenero">
+      
+      
+          <div>
+              
+              
+                  <label for="id_idgenero">Idgenero:</label>
+                  
+                      <div class="related-widget-wrapper">
+<select name="idgenero" id="id_idgenero">
+<option value="" selected>---------</option>
+
+<option value="1">ID - 1 - Femenino</option>
+
+<option value="2">ID - 2 - Masculino</option>
+
+<option value="3">ID - 3 - No Binario</option>
+
+</select>
+
+  
+
+</div>
+                  
+              
+              
+          </div>
+      
+  </div>
+
+</fieldset>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="submit-row">
+
+<input type="submit" value="Save" class="default" name="_save">
+
+
+<input type="submit" value="Save and add another" name="_addanother">
+<input type="submit" value="Save and continue editing" name="_continue">
+
+
+</div>
+
+
+
+<script type="text/javascript"
+      id="django-admin-form-add-constants"
+      src="/static/admin/js/change_form.js"
+      
+          data-model-name="postulante"
+      >
+</script>
+
+
+
+
+<script type="text/javascript"
+  id="django-admin-prepopulated-fields-constants"
+  src="/static/admin/js/prepopulate_init.js"
+  data-prepopulated-fields="[]">
+</script>
+
+
+</div>
+</form></div>
+
+  
+  <br class="clear">
+</div>
+<!-- END Content -->
+
   <input name="" id="" class="btn btn-success" type="submit" value="Enviar">
 </form>
