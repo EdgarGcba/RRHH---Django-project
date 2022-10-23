@@ -17,6 +17,8 @@
                         <th scope="col">ID</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Barrio</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -26,7 +28,11 @@
                         <td >{{ postulante.id }}</td>
                         <td>{{ postulante.nombre }}</td>
                         <td>{{ postulante.apellido }}</td>
-                        <td><a name="" id="" class="btn btn-info" href="{% url 'editar' postulante.id %}" role="button">Editar</a>
+                        <td>{{ postulante.idestado }}</td>
+                        <td>{{ postulante.barrio }}</td>
+                        <td>
+                            <a name="" id="" class="btn btn-info" href="{% url 'editar' postulante.id %}" role="button">Editar</a>
+                            |<a name="" id="" class="btn btn-info" href="{% url 'idioma' postulante.id %}" role="button">Agregar Idioma</a>
                             |<a name="" id="" class="btn btn-danger" href="{% url 'eliminar' postulante.id %}" role="button">Borrar</a>
                         </td>
                     </tr>

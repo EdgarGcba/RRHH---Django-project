@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import *
-from .forms import PostulanteForm
+from .forms import PostulanteForm, IdiomaForm
+
 
 def inicio(request):
     return render(request, 'pages/inicio.html')
@@ -31,6 +32,16 @@ def eliminar(request, id):
     postulante = Postulante.objects.get(id=id)
     postulante.delete()
     return render(request, 'postulantes' )
+
+def idioma(request, id):
+    postulante = Postulante.objects.get(id=id)
+    formulario = IdiomaForm(request.POST or None, request.FILES or None, instance=postulante)
+    if formulario.is_valid() and request.POST:
+        formulario.save()
+        return redirect ('postulantes')
+    return render(request, 'postulantes/idioma.html', {'formulario': formulario}) 
+
+
 
 
 # Create your views here.

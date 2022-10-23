@@ -90,17 +90,7 @@ class Migration(migrations.Migration):
                 'managed': False,
             },
         ),
-        migrations.CreateModel(
-            name='Idioma',
-            fields=[
-                ('id', models.AutoField(db_column='ID', primary_key=True, serialize=False)),
-                ('descripcion', models.CharField(blank=True, db_column='Descripcion', max_length=10, null=True)),
-            ],
-            options={
-                'db_table': 'idioma',
-                'managed': False,
-            },
-        ),
+        
         migrations.CreateModel(
             name='Organizacion',
             fields=[
@@ -155,17 +145,7 @@ class Migration(migrations.Migration):
                 'managed': False,
             },
         ),
-        migrations.CreateModel(
-            name='PostulanteIdioma',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('descripcion', models.CharField(blank=True, db_column='Descripcion', max_length=250, null=True)),
-            ],
-            options={
-                'db_table': 'postulante_idioma',
-                'managed': False,
-            },
-        ),
+        
         migrations.CreateModel(
             name='PostulanteRol',
             fields=[

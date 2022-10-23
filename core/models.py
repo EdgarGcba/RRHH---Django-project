@@ -10,11 +10,15 @@ from django.db import models
 
 
 class Barrio(models.Model):
+
     id = models.AutoField(db_column='ID', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(db_column='Nombre', max_length=50, blank=True, null=True, verbose_name="Nombre")  # Field name made lowercase.
     idciudad = models.ForeignKey('Ciudad', models.DO_NOTHING, db_column='IDciudad', blank=True, null=True)  # Field name made lowercase.
     codigo_postal = models.CharField(db_column='Codigo Postal', max_length=20, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 
+    def __str__(self):
+        fila = "ID - " + str(self.id) +" - "+ self.nombre
+        return fila
     class Meta:
         managed = False
         db_table = 'barrio'
@@ -37,7 +41,7 @@ class Busquedalaboral(models.Model):
     idrol = models.ForeignKey('Rol', models.DO_NOTHING, db_column='IDrol', blank=True, null=True)  # Field name made lowercase.
     fecha = models.DateField(blank=True, null=True)
     descripcion = models.CharField(db_column='Descripcion', max_length=250, blank=True, null=True)  # Field name made lowercase.
-    ididioma = models.ForeignKey('Idioma', models.DO_NOTHING, db_column='IDidioma', blank=True, null=True)  # Field name made lowercase.
+    
 
     
     class Meta:
@@ -76,6 +80,9 @@ class Estado(models.Model):
     id = models.AutoField(db_column='ID', primary_key=True)  # Field name made lowercase.
     descripcion = models.CharField(db_column='Descripcion', max_length=25, blank=True, null=True)  # Field name made lowercase.
 
+    def __str__(self):
+        fila = "ID - " + str(self.id) +" - "+ self.descripcion
+        return fila
     class Meta:
         managed = False
         db_table = 'estado'
@@ -94,18 +101,7 @@ class Genero(models.Model):
         db_table = 'genero'
 
 
-class Idioma(models.Model):
-    id = models.AutoField(db_column='ID', primary_key=True)  # Field name made lowercase.
-    descripcion = models.CharField(db_column='Descripcion', max_length=10, blank=True, null=True)  # Field name made lowercase.
 
-    
-    def __str__(self):
-        fila = "ID - " + str(self.id) +" - "+ self.descripcion
-        return fila
-
-    class Meta:
-        managed = False
-        db_table = 'idioma'
 
 
 class Organizacion(models.Model):
@@ -166,15 +162,7 @@ class PostulanteBusqueda(models.Model):
         db_table = 'postulante_busqueda'
 
 
-class PostulanteIdioma(models.Model):
-    idpostulante = models.ForeignKey(Postulante, models.DO_NOTHING, db_column='IDpostulante')  # Field name made lowercase.
-    ididioma = models.ForeignKey(Idioma, models.DO_NOTHING, db_column='IDidioma')  # Field name made lowercase.
-    idestado = models.ForeignKey(Estado, models.DO_NOTHING, db_column='IDestado', blank=True, null=True)  # Field name made lowercase.
-    descripcion = models.CharField(db_column='Descripcion', max_length=250, blank=True, null=True)  # Field name made lowercase.
 
-    class Meta:
-        managed = False
-        db_table = 'postulante_idioma'
 
 
 class PostulanteRol(models.Model):
@@ -197,6 +185,10 @@ class PostulanteTecnologia(models.Model):
     class Meta:
         managed = False
         db_table = 'postulante_tecnologia'
+    
+    def __str__(self):
+        fila = "ID - " + str(self.id) +" - "+ self.descripcion
+        return fila
 
 
 class Provincia(models.Model):
@@ -251,3 +243,14 @@ class Tipoorganizacion(models.Model):
     class Meta:
         managed = False
         db_table = 'tipoorganizacion'
+
+class Idioma(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=25)
+    postulante = models.ManyToManyField("Postulante")
+
+    def __str__(self):
+        fila = "ID - " + str(self.id) +" - "+ self.nombre
+        return fila
+     
+    
